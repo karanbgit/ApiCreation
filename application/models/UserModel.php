@@ -21,6 +21,13 @@ class UserModel extends CI_Model
     {
         return $this->db->get("newapitable")->result();
     }
+
+
+    function DeleteUserModel($id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->delete("newapitable");
+    }
 }
 
 ?>
