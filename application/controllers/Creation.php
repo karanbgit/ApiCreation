@@ -10,5 +10,27 @@ class Creation extends CI_Controller
         $this->load->model('UserModel');
     }
 
+
+
+    public function AddUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $formdata = $this->input->post();
+            $event = $this->UserModel->AddUserDataModel($formdata);
+
+            if ($event != null) {
+                $this->output->set_status_header(200);
+                $response = array("status" => "success", "message" => "Data added successfully");
+            } else {
+                $this->output->set_status_header(404);
+                $response = array("status" => "error", "message" => "Data not added");
+            }
+        } else {
+            $this->output->set_status_header(405);
+
+            $response = array("status" => "error", "message" => "Bad Request");
+        }
+        $this->output->set_content_type("application/json")->set_output(json_encode($response));
+    }
 }
 ?>
