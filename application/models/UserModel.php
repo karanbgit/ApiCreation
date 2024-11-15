@@ -15,6 +15,12 @@ class UserModel extends CI_Model
     {
         return $this->db->insert("newapitable", $userdata);
     }
+
+
+    public function GetUserDataModel()
+    {
+        return $this->db->get("newapitable")->result();
+    }
 }
 
 ?>
