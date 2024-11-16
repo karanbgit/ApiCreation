@@ -99,5 +99,28 @@ class Creation extends CI_Controller
         }
         $this->output->set_content_type("application/json")->set_output(json_encode($response));
     }
+
+
+    // Update User 
+    public function UpdateUser($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $formdata = $this->input->post();
+            $event = $this->UserModel->UpdateUser($formdata, $id);
+
+            if ($event != null) {
+                $this->output->set_status_header(200);
+                $response = array("status" => "success", "message" => "Data updated successfully");
+            } else {
+                $this->output->set_status_header(404);
+                $response = array("status" => "error", "message" => "Data not updated");
+            }
+        } else {
+            $this->output->set_status_header(405);
+
+            $response = array("status" => "error", "message" => "Bad Request");
+        }
+        $this->output->set_content_type("application/json")->set_output(json_encode($response));
+    }
 }
 ?>

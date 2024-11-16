@@ -39,6 +39,14 @@ class UserModel extends CI_Model
         $this->db->where("id", $id);
         return $this->db->get("newapitable")->row();
     }
+
+
+    // Update User model
+    function UpdateUser($userdata, $id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->update("newapitable", $userdata);
+    }
 }
 
 ?>
