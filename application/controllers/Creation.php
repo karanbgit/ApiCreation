@@ -6,12 +6,12 @@ class Creation extends CI_Controller
     function __construct()
     {
         parent::__construct();
-
         $this->load->model('UserModel');
+        // Load Model 
     }
 
 
-
+    // Add users from form API Creation
     public function AddUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,7 +34,7 @@ class Creation extends CI_Controller
     }
 
 
-
+    // Get user data form database through the API Creation
     public function GetUserData()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -56,7 +56,7 @@ class Creation extends CI_Controller
     }
 
 
-
+    // Delete Operation using API Creation
     public function DeleteUserData($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -77,5 +77,9 @@ class Creation extends CI_Controller
         $this->output->set_content_type("application/json")->set_output(json_encode($response));
 
     }
+
+
+    // 
+    
 }
 ?>

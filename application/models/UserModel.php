@@ -8,21 +8,24 @@ class UserModel extends CI_Model
     {
         parent::__construct();
         $this->load->database();
+        // Load Database library
     }
 
-    // Adding data using the api in database
+    // Adding model data using the api in database
     public function AddUserDataModel($userdata)
     {
         return $this->db->insert("newapitable", $userdata);
     }
 
 
+    // Get User data Model 
     public function GetUserDataModel()
     {
         return $this->db->get("newapitable")->result();
     }
 
 
+    // Delete User model 
     function DeleteUserModel($id)
     {
         $this->db->where("id", $id);
