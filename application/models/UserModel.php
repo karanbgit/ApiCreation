@@ -31,6 +31,14 @@ class UserModel extends CI_Model
         $this->db->where("id", $id);
         return $this->db->delete("newapitable");
     }
+
+
+    // Get data Model From database by id
+    public function GetUserByIdModel($id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->get("newapitable")->row();
+    }
 }
 
 ?>
