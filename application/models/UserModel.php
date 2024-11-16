@@ -34,13 +34,14 @@ class UserModel extends CI_Model
 
 
     // Get data Model From database by id
-
     function GetUserById($id)
     {
         $this->db->where("id", $id);
         return $this->db->get("newapitable")->row();
     }
 
+
+    // Updated data post on API Model
     function UpdateUser($userdata, $id)
     {
         $this->db->where("id", $id);

@@ -102,8 +102,6 @@ class Creation extends CI_Controller
     }
 
 
-
-
     public function UpdateUser($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
