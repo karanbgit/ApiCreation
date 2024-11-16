@@ -80,10 +80,11 @@ class Creation extends CI_Controller
 
 
     // Get Data function by ID using API Creation
+
     public function GetUserById($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $event = $this->UserModel->GetUserByIdModel($id);
+            $event = $this->UserModel->GetUserById($id);
 
             if ($event != null) {
                 $this->output->set_status_header(200);
@@ -101,7 +102,8 @@ class Creation extends CI_Controller
     }
 
 
-    // Update User 
+
+
     public function UpdateUser($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
