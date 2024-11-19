@@ -16,6 +16,26 @@ class Creation extends CI_Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $formdata = $this->input->post();
+
+            $config['upload_path'] = 'uploads/';
+            $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
+            $config['max_size'] = 51200; // 50 MB in KB
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            $data = []; // Initialize an array to hold the response data
+
+            // Check if a file is uploaded
+
+            if (isset($_FILES["image"])) {
+                if (!$this->upload->do_upload('image')) {
+                    $data['error'] = $this->upload->display_errors();
+                    print_r($data);
+                } else {
+                    $data['upload_data'] = $this->upload->data();
+                    $formdata['image'] = $data['upload_data']['file_name'];
+                }
+            }
             $event = $this->UserModel->AddUserDataModel($formdata);
 
             if ($event != null) {
@@ -106,6 +126,31 @@ class Creation extends CI_Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $formdata = $this->input->post();
+
+
+
+            $config['upload_path'] = 'uploads/';
+            $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
+            $config['max_size'] = 51200; // 50 MB in KB
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            $data = []; // Initialize an array to hold the response data
+
+            // Check if a file is uploaded
+
+            if (isset($_FILES["image"])) {
+                if (!$this->upload->do_upload('image')) {
+                    $data['error'] = $this->upload->display_errors();
+                    print_r($data);
+                } else {
+                    $data['upload_data'] = $this->upload->data();
+                    $formdata['image'] = $data['upload_data']['file_name'];
+                }
+            }
+
+
+
             $event = $this->UserModel->UpdateUser($formdata, $id);
 
             if ($event != null) {
